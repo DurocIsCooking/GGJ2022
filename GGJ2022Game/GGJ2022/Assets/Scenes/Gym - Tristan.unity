@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 2015526495}
   - component: {fileID: 2015526499}
   m_Layer: 0
-  m_Name: ChickenLeader
+  m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,12 +347,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a6495eebfeedb4db0332dcabf38306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalSpeedMultiplier: 8
+  HorizontalSpeedEgg: 6
+  HorizontalSpeedNoEgg: 9
   JumpVelocity: 6
   ExtendedJumpVelocity: 0.1
   GravityScale: 1
   GroundCheckRaycastLength: 0.25
   WallCheckRaycastLength: 0.05
+  EggPrefab: {fileID: 6000394852441481893, guid: e10d33d0bb525c34d812bf58bce57a26, type: 3}
+  EggLaunchForce: 15
 --- !u!58 &2015526496
 CircleCollider2D:
   m_ObjectHideFlags: 0
