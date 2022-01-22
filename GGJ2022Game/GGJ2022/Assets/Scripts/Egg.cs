@@ -20,7 +20,12 @@ public class Egg : MonoBehaviour
     // Respawn point
     public static Vector3 RespawnPoint;
 
-    private bool _airborne = true;
+    // Chicken
+    public bool IsActive = false;
+    private bool _airborne = true; // Can't control egg during initial throw
+
+    public static float MaxHealth = 2;
+    public static float Health = 2;
 
     private void Awake()
     {
@@ -31,10 +36,14 @@ public class Egg : MonoBehaviour
 
     private void Update()
     {
-        CollectInput();
+        if(IsActive)
+        {
+            CollectMovementInput();
+        }
+        
     }
 
-    private void CollectInput()
+    private void CollectMovementInput()
     {
         // Get horizontal input with axis controls
         _horizontalInput = Input.GetAxis("EggHorizontal");
@@ -43,7 +52,7 @@ public class Egg : MonoBehaviour
     private void FixedUpdate()
     {
         // Manage movement based on input
-        if(!_airborne)
+        if(!_airborne && IsActive)
         {
             ManageHorizontalMovement();
         }
@@ -66,7 +75,7 @@ public class Egg : MonoBehaviour
             {
                 topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y + 0.25f), Vector2.left, WallCheckRaycastLength);
                 midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y), Vector2.left, WallCheckRaycastLength);
-                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y - 0.25f), Vector2.left, WallCheckRaycastLength);
+                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y - 0.24f), Vector2.left, WallCheckRaycastLength);
             }
             // Moving right
             else
@@ -76,9 +85,26 @@ public class Egg : MonoBehaviour
                 botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y - 0.25f), Vector2.left, WallCheckRaycastLength);
             }
             // If we hit something, stop horizontal movement
-            if (topHit.collider != null || midHit.collider != null || botHit.collider != null)
+            if (topHit.collider != null)
             {
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                if(topHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+            }
+            if (midHit.collider != null)
+            {
+                if (midHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+            }
+            if (botHit.collider != null)
+            {
+                if (botHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
             }
         }
 
@@ -87,5 +113,6 @@ public class Egg : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         _airborne = false;
+        // CRACKED VISUALS
     }
 }

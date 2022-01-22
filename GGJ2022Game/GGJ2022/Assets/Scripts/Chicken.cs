@@ -31,13 +31,20 @@ public class Chicken : MonoBehaviour
 
     // Egg
     public GameObject EggPrefab;
+    private GameObject _eggInstance;
     private bool _hasEgg = true;
     public float EggLaunchForce;
+    public bool IsActive = true;
+
+    // Health
+    [SerializeField] private int _maxStamina;
+    private int _currentStamina;
 
     private void Awake()
     {
-        // Set speed
+        // Set values
         _currentHorizontalSpeed = HorizontalSpeedEgg;
+        _currentStamina = _maxStamina;
         // Pointers
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = GravityScale;
@@ -45,16 +52,21 @@ public class Chicken : MonoBehaviour
 
     private void Update()
     {
-        CollectInput();
+        // Swap controls if needed
+        ManageControls();
+        if (IsActive)
+        {
+            CollectMovementInput();
+        }
     }
 
-    private void CollectInput()
+    private void CollectMovementInput()
     {
         // Get horizontal input with axis controls
-        _horizontalInput = Input.GetAxis("ChickenHorizontal");
+        _horizontalInput = Input.GetAxis("Horizontal");
 
         // Check to see if player wants to jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && _currentStamina > 0)
         {
             _wantsToJump = true;
         }
@@ -67,24 +79,52 @@ public class Chicken : MonoBehaviour
 
     private void ThrowEgg()
     {
-        _hasEgg = false;
-        _currentHorizontalSpeed = HorizontalSpeedNoEgg;
+        if(Egg.Health > 0)
+        {
+            _hasEgg = false;
+            _currentHorizontalSpeed = HorizontalSpeedNoEgg;
+            Egg.Health -= 1;
 
-        // Get launch vector
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 chickenPos = new Vector2(transform.position.x, transform.position.y);
-        Vector2 launchDirection = (mousePos - chickenPos).normalized;
+            // Get launch vector
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 chickenPos = new Vector2(transform.position.x, transform.position.y);
+            Vector2 launchDirection = (mousePos - chickenPos).normalized;
 
-        // Instantiate egg
-        GameObject egg = Instantiate(EggPrefab, chickenPos + launchDirection, Quaternion.identity);
-        egg.GetComponent<Rigidbody2D>().velocity = launchDirection * EggLaunchForce;
+            // Instantiate egg
+            _eggInstance = Instantiate(EggPrefab, chickenPos + launchDirection, Quaternion.identity);
+            _eggInstance.GetComponent<Rigidbody2D>().velocity = launchDirection * EggLaunchForce;
+            //_eggInstance.GetComponent<Egg>().Chicken = gameObject;
+        }
+
     }
 
     private void FixedUpdate()
     {
         // Manage movement based on input
-        ManageHorizontalMovement();
-        ManageJump();
+        if(IsActive)
+        {
+            ManageHorizontalMovement();
+            ManageJump();
+        }
+    }
+
+    private void ManageControls()
+    {
+        if (Input.GetButtonDown("SwitchControls") && _eggInstance != null)
+        {
+            SwitchControls();
+        }
+    }
+
+    public void SwitchControls()
+    {
+        // Stop movement
+        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        Rigidbody2D eggrb = _eggInstance.GetComponent<Rigidbody2D>();
+        eggrb.velocity = new Vector2(0, eggrb.velocity.y);
+        // Switch controls
+        _eggInstance.GetComponent<Egg>().IsActive = IsActive;
+        IsActive = !IsActive;
     }
 
     private void ManageHorizontalMovement()
@@ -114,9 +154,26 @@ public class Chicken : MonoBehaviour
                 botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y - 0.5f), Vector2.left, WallCheckRaycastLength);
             }
             // If we hit something, stop horizontal movement
-            if (topHit.collider != null || midHit.collider != null || botHit.collider != null)
+            if (topHit.collider != null)
             {
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                if (topHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+            }
+            if (midHit.collider != null)
+            {
+                if (midHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+            }
+            if (botHit.collider != null)
+            {
+                if (botHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
             }
         }
         
@@ -138,6 +195,8 @@ public class Chicken : MonoBehaviour
             {
                 _canDoubleJump = false;
             }
+            _currentStamina -= 1;
+            // VISUALS FOR STAMINA
         }
 
         // Add a bit of speed if holding space
@@ -175,12 +234,39 @@ public class Chicken : MonoBehaviour
         if(col.collider.gameObject.layer == LayerMask.NameToLayer("Egg"))
         {
             Destroy(col.collider.gameObject);
-            _hasEgg = true;
-            _canDoubleJump = false;
-            _currentHorizontalSpeed = HorizontalSpeedEgg;
+            if(!IsActive)
+            {
+                SwitchControls();
+            }
+            PickUpEgg();
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Nest"))
+        {
+            if (_hasEgg)
+            {
+                _currentStamina = _maxStamina;
+                Egg.Health = Egg.MaxHealth;
+            }
+            else
+            {
+                // PROMPT PLAYER TO FIND EGG
+            }
         }
     }
 
+    public void PickUpEgg()
+    {
+        _hasEgg = true;
+        _canDoubleJump = false;
+        _currentHorizontalSpeed = HorizontalSpeedEgg;
+    }
+
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
