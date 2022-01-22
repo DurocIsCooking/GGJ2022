@@ -1,43 +1,43 @@
 fileFormatVersion: 2
-guid: 704bcbce79688cc469ae87f7d4902875
+guid: 292a31b4e172a5e4fa5eb2394be93f42
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2602630950210378508
-    second: 3ER_01
+      213: 1984122609184600595
+    second: ChickenIdle_01
   - first:
-      213: 4674068748126342578
-    second: 3ER_02
+      213: 2366321030691140031
+    second: ChickenIdle_02
   - first:
-      213: 4819429165317977580
-    second: 3ER_03
+      213: 75117754486135400
+    second: ChickenIdle_03
   - first:
-      213: -275820039759970797
-    second: 3ER_04
+      213: 3966789892649529124
+    second: ChickenIdle_04
   - first:
-      213: -8647918534475403343
-    second: 3ER_05
+      213: -5374393789053208117
+    second: ChickenIdle_05
   - first:
-      213: 2438909019205625
-    second: 3ER_06
+      213: 4421874240883977765
+    second: ChickenIdle_06
   - first:
-      213: -7654320560809501103
-    second: 3ER_07
+      213: -4068287436701835903
+    second: ChickenIdle_07
   - first:
-      213: -8549237829562756100
-    second: 3ER_08
+      213: 7655946127578078584
+    second: ChickenIdle_08
   - first:
-      213: -7916285257875567919
-    second: 3ER_09
+      213: -1306799862210271189
+    second: ChickenIdle_09
   - first:
-      213: 1064609479657083240
-    second: 3ER_10
+      213: -2092636715115050553
+    second: ChickenIdle_02
   - first:
-      213: 4329994864768579107
-    second: 3ER_11
+      213: 5043477669517356157
+    second: ChickenIdle_10
   - first:
-      213: 5978598732269976735
-    second: 3ER_12
+      213: 7609656133371944702
+    second: ChickenIdle_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,7 +104,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,7 +116,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,13 +127,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 3ER_01
+      name: ChickenIdle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312f44f2005098b10800000000000000
+      internalID: 1984122609184600595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChickenIdle_02
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1b1eaa07cd6d020800000000000000
+      internalID: 2366321030691140031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChickenIdle_03
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a9870233fda0100800000000000000
+      internalID: 75117754486135400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChickenIdle_04
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f2cf1f36edc0730800000000000000
+      internalID: 3966789892649529124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChickenIdle_05
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,41 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f4e54ba0f891ebd0800000000000000
-      internalID: -2602630950210378508
+      spriteID: bc9fa68d2515a65b0800000000000000
+      internalID: -5374393789053208117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_02
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bd43db13c0add040800000000000000
-      internalID: 4674068748126342578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3ER_03
+      name: ChickenIdle_06
       rect:
         serializedVersion: 2
         x: 32
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce57fea9a4d02e240800000000000000
-      internalID: 4819429165317977580
+      spriteID: 52ee659a137ad5d30800000000000000
+      internalID: 4421874240883977765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_04
+      name: ChickenIdle_07
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31e3c2c92271c2cf0800000000000000
-      internalID: -275820039759970797
+      spriteID: 18dd33b812a8a87c0800000000000000
+      internalID: -4068287436701835903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_05
+      name: ChickenIdle_08
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,83 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bfa31a59eb6cf780800000000000000
-      internalID: -8647918534475403343
+      spriteID: 87d91d9a0726f3a60800000000000000
+      internalID: 7655946127578078584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_06
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ffaab1cc2aa80000800000000000000
-      internalID: 2438909019205625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3ER_07
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15e1bf7110466c590800000000000000
-      internalID: -7654320560809501103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3ER_08
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf394946d710b5980800000000000000
-      internalID: -8549237829562756100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3ER_09
+      name: ChickenIdle_09
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,41 +309,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1da4aaf0084b32290800000000000000
-      internalID: -7916285257875567919
+      spriteID: b286d64f2705ddde0800000000000000
+      internalID: -1306799862210271189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_10
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86159736ea046ce00800000000000000
-      internalID: 1064609479657083240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3ER_11
+      name: ChickenIdle_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,20 +330,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326fbc1636b371c30800000000000000
-      internalID: 4329994864768579107
+      spriteID: 7c980afaef575f2e0800000000000000
+      internalID: -2092636715115050553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3ER_12
+      name: ChickenIdle_10
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,8 +351,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9c7d8bfedf38f250800000000000000
-      internalID: 5978598732269976735
+      spriteID: d7c623c08380ef540800000000000000
+      internalID: 5043477669517356157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChickenIdle_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efed1848fedea9960800000000000000
+      internalID: 7609656133371944702
       vertices: []
       indices: 
       edges: []
