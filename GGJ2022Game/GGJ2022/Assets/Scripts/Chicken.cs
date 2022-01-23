@@ -43,6 +43,14 @@ public class Chicken : MonoBehaviour
     [SerializeField] private int _maxStamina;
     private int _currentStamina;
 
+    // Animation
+    [SerializeField] private Animator _chickenAnimator;
+    [SerializeField] private SpriteRenderer _chickenRenderer;
+    [SerializeField] private GameObject _carriedEggLeft;
+    [SerializeField] private GameObject _carriedEggRight;
+    [SerializeField] private Sprite[] _backEggSprites;
+    private bool _hasFoundAnimation;
+
     private void Awake()
     {
         // Set values
@@ -101,8 +109,11 @@ public class Chicken : MonoBehaviour
         if(Egg.Health > 0)
         {
             _hasEgg = false;
+
+            _carriedEggLeft.SetActive(false);
+            _carriedEggRight.SetActive(false);
+
             _currentHorizontalSpeed = HorizontalSpeedNoEgg;
-            Egg.Health -= 1;
 
             // Get launch vector
             Vector2 mousePos = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -122,7 +133,13 @@ public class Chicken : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _hasFoundAnimation = false;
         // Manage movement based on input
+        if(_rigidbody.velocity.y < 0)
+        {
+            _hasFoundAnimation = true;
+            _chickenAnimator.Play("ChickenFlutter");
+        }
         if(IsActive)
         {
             ManageHorizontalMovement();
@@ -131,6 +148,10 @@ public class Chicken : MonoBehaviour
         if(_inWater)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
+        }
+        if (!_hasFoundAnimation && !_chickenAnimator.GetCurrentAnimatorStateInfo(0).IsName("ChickenJump"))
+        {
+            _chickenAnimator.Play("ChickenIdle");
         }
     }
 
@@ -158,6 +179,32 @@ public class Chicken : MonoBehaviour
     {
         // Move
         _rigidbody.velocity = new Vector2(_horizontalInput * _currentHorizontalSpeed, _rigidbody.velocity.y);
+        if (_horizontalInput > 0)
+        {
+            if (IsTouchingGround())
+            {
+                _hasFoundAnimation = true;
+                _chickenAnimator.Play("ChickenWalk");
+            }
+            _chickenRenderer.flipX = false;
+            if (_hasEgg)
+            {
+                BackEggUpdate();
+            }
+        }
+        else if (_horizontalInput < 0)
+        {
+            if (IsTouchingGround())
+            {
+                _hasFoundAnimation = true;
+                _chickenAnimator.Play("ChickenWalk");
+            }
+            _chickenRenderer.flipX = true;
+            if (_hasEgg)
+            {
+                BackEggUpdate();
+            }
+        }
         
         // Wall check (to prevent sticking to walls)
         if (_rigidbody.velocity.x != 0)
@@ -218,6 +265,7 @@ public class Chicken : MonoBehaviour
         if (_wantsToJump && (IsTouchingGround() || _canDoubleJump))
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpForce);
+            _chickenAnimator.Play("ChickenJump");
             if(!IsTouchingGround()) // If we just double jumped
             {
                 _canDoubleJump = false;
@@ -267,6 +315,7 @@ public class Chicken : MonoBehaviour
                 SwitchControls();
             }
             PickUpEgg();
+            BackEggUpdate();
         }
         // Parent to moving platform
         if (col.gameObject.tag == "Platform")
@@ -294,6 +343,7 @@ public class Chicken : MonoBehaviour
             {
                 _currentStamina = _maxStamina;
                 Egg.Health = Egg.MaxHealth;
+                BackEggUpdate();
             }
             else
             {
@@ -346,5 +396,52 @@ public class Chicken : MonoBehaviour
         _hasEgg = true;
         _canDoubleJump = false;
         _currentHorizontalSpeed = HorizontalSpeedEgg;
+    }
+    private void BackEggUpdate()
+    {
+        BackEggVisuals();
+        if (_chickenRenderer.flipX)
+        {
+            _carriedEggLeft.SetActive(true);
+            _carriedEggRight.SetActive(false);
+        }
+        else
+        {
+            _carriedEggLeft.SetActive(false);
+            _carriedEggRight.SetActive(true);
+        }
+    }
+    private void BackEggVisuals()
+    {
+        GameObject _activeEgg;
+        if (_carriedEggLeft.activeSelf)
+        {
+            _activeEgg = _carriedEggLeft;
+        }
+        else
+        {
+            _activeEgg = _carriedEggRight;
+        }
+        switch (Egg.Health)
+        {
+            case 2:
+                {
+                    _activeEgg.transform.Find("ERL").GetComponent<SpriteRenderer>().sprite = _backEggSprites[0];
+                    _activeEgg.transform.Find("ERR").GetComponent<SpriteRenderer>().sprite = _backEggSprites[1];
+                    break;
+                }
+            case 1:
+                {
+                    _activeEgg.transform.Find("ERL").GetComponent<SpriteRenderer>().sprite = _backEggSprites[2];
+                    _activeEgg.transform.Find("ERR").GetComponent<SpriteRenderer>().sprite = _backEggSprites[3];
+                    break;
+                }
+            case 0:
+                {
+                    _activeEgg.transform.Find("ERL").GetComponent<SpriteRenderer>().sprite = _backEggSprites[4];
+                    _activeEgg.transform.Find("ERR").GetComponent<SpriteRenderer>().sprite = _backEggSprites[5];
+                    break;
+                }
+        }
     }
 }
