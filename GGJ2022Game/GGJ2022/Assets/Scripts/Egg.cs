@@ -114,14 +114,32 @@ public class Egg : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         _airborne = false;
+
         // CRACKED VISUALS
+
+        //Parent to moving platform
+        if (col.gameObject.tag == "Platform")
+        {
+            gameObject.transform.parent = col.gameObject.transform;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        // Deparent from moving platform
+        gameObject.transform.parent = null;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             Debug.Log("Water");
             _inWater = true;
+        }
+        if (col.gameObject.layer == LayerMask.NameToLayer("Nest") || col.gameObject.layer == LayerMask.NameToLayer("Goal"))
+        {
+            // PROMPT PLAYER TO FIND CHICKEN   
         }
     }
 
