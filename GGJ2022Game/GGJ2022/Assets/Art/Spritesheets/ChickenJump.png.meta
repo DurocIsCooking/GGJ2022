@@ -1,43 +1,25 @@
 fileFormatVersion: 2
-guid: b3b60f45c20852a4489a1966eb5dba2c
+guid: 220527e35f906274faea5cb19cc3b289
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7441746476521331808
-    second: 1ER_01
+      213: -4507012055625608063
+    second: ChickenJump_01
   - first:
-      213: 2845001855053748133
-    second: 1ER_02
+      213: 7925284593655413640
+    second: ChickenJump_02
   - first:
-      213: 748223717377253412
-    second: 1ER_03
+      213: 5812860171368700925
+    second: ChickenJump_03
   - first:
-      213: -3404678617149207123
-    second: 1ER_04
+      213: -3766484290510884083
+    second: ChickenJump_04
   - first:
-      213: -683784675350895019
-    second: 1ER_05
+      213: -6588370956057782684
+    second: ChickenJump_05
   - first:
-      213: -6627317785135735541
-    second: 1ER_06
-  - first:
-      213: 4764998346691780547
-    second: 1ER_07
-  - first:
-      213: -282375583205689845
-    second: 1ER_08
-  - first:
-      213: -1386953299956863824
-    second: 1ER_09
-  - first:
-      213: -9166422878547695026
-    second: 1ER_10
-  - first:
-      213: 8762205426245953223
-    second: 1ER_11
-  - first:
-      213: -7221157504349533641
-    second: 1ER_12
+      213: 1343667796721514819
+    second: ChickenJump_06
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1ER_01
+      name: ChickenJump_01
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,41 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c91990ef4664760800000000000000
-      internalID: 7441746476521331808
+      spriteID: 18458022a60e371c0800000000000000
+      internalID: -4507012055625608063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_02
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a75ecb1d1a7b7720800000000000000
-      internalID: 2845001855053748133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_03
+      name: ChickenJump_02
       rect:
         serializedVersion: 2
         x: 32
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4202bc6b189326a00800000000000000
-      internalID: 748223717377253412
+      spriteID: 88bf4b419544cfd60800000000000000
+      internalID: 7925284593655413640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_04
+      name: ChickenJump_03
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,104 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad047226d620c0d0800000000000000
-      internalID: -3404678617149207123
+      spriteID: dfb927b278d6ba050800000000000000
+      internalID: 5812860171368700925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_05
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 556aadae575b286f0800000000000000
-      internalID: -683784675350895019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_06
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0d1b5366990704a0800000000000000
-      internalID: -6627317785135735541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_07
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cf13e110cca02240800000000000000
-      internalID: 4764998346691780547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_08
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b06f7c537ecc41cf0800000000000000
-      internalID: -282375583205689845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_09
+      name: ChickenJump_04
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,41 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bce304725d80cce0800000000000000
-      internalID: -1386953299956863824
+      spriteID: d0372045e72cabbc0800000000000000
+      internalID: -3766484290510884083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_10
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4aa62f25f25ac080800000000000000
-      internalID: -9166422878547695026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_11
+      name: ChickenJump_05
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c6e368396b999970800000000000000
-      internalID: 8762205426245953223
+      spriteID: 466dcaba5876194a0800000000000000
+      internalID: -6588370956057782684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_12
+      name: ChickenJump_06
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73a8916528b49cb90800000000000000
-      internalID: -7221157504349533641
+      spriteID: 349b7b7fdbaa5a210800000000000000
+      internalID: 1343667796721514819
       vertices: []
       indices: 
       edges: []
