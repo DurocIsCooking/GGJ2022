@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button_Test : MonoBehaviour
+public class Button : MonoBehaviour
 {
     [SerializeField] private bool m_ButtonPressed;
     [SerializeField] private GameObject m_Platform;
@@ -29,7 +29,7 @@ public class Button_Test : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Chicken") || collision.gameObject.layer == LayerMask.NameToLayer("Egg"))
         {
             m_ButtonPressed = true;
             m_Animator.SetBool("ButtonIsPressed", true);
@@ -39,7 +39,7 @@ public class Button_Test : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken") || collision.gameObject.layer == LayerMask.NameToLayer("Egg"))
         {
             m_ButtonPressed = false;
             m_Animator.SetBool("ButtonIsPressed", false);

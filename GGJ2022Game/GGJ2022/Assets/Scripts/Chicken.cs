@@ -5,7 +5,8 @@ using UnityEngine;
 public class Chicken : MonoBehaviour
 {
     // Pointers
-    Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
+    [HideInInspector] public CameraMovement Camera;
 
     // Horizontal movement
     private float _horizontalInput;
@@ -88,14 +89,17 @@ public class Chicken : MonoBehaviour
             Egg.Health -= 1;
 
             // Get launch vector
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 chickenPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 launchDirection = (mousePos - chickenPos).normalized;
 
             // Instantiate egg
             _eggInstance = Instantiate(EggPrefab, chickenPos + launchDirection, Quaternion.identity);
             _eggInstance.GetComponent<Rigidbody2D>().velocity = launchDirection * EggLaunchForce;
-            //_eggInstance.GetComponent<Egg>().Chicken = gameObject;
+
+            Debug.Log(_eggInstance.name);
+
+            Camera.Egg = _eggInstance;
         }
 
     }
@@ -124,15 +128,17 @@ public class Chicken : MonoBehaviour
 
     public void SwitchControls()
     {
-        // Stop movement
+        // Stop movement and change camera focus
         if (IsActive)
         {
             _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+            Camera.CameraFocus = _eggInstance;
         }
         else
         {
             Rigidbody2D eggrb = _eggInstance.GetComponent<Rigidbody2D>();
             eggrb.velocity = new Vector2(0, eggrb.velocity.y);
+            Camera.CameraFocus = gameObject;
         }
         // Switch controls
         _eggInstance.GetComponent<Egg>().IsActive = IsActive;
