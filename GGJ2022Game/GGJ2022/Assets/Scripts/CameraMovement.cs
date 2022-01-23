@@ -18,6 +18,6 @@ public class CameraMovement : MonoBehaviour
     private void Update()
     {
         Vector3 focusPosition = CameraFocus.transform.position;
-        transform.position = new Vector3(focusPosition.x, focusPosition.y, transform.position.z);
+        transform.position = new Vector3(focusPosition.x, focusPosition.y + 2, transform.position.z);
     }
 }
