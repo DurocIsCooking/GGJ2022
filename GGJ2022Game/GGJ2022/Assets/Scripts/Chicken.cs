@@ -279,6 +279,24 @@ public class Chicken : MonoBehaviour
                 // PROMPT PLAYER TO FIND EGG
             }
         }
+        if (col.gameObject.layer == LayerMask.NameToLayer("Goal"))
+        {
+            if (_hasEgg)
+            {
+                if (col.gameObject.GetComponent<Goal>().StartOfNextLevel != null)
+                {
+                    transform.position = col.gameObject.GetComponent<Goal>().StartOfNextLevel.transform.position;
+                }
+                else
+                {
+                    // YOU WIN!
+                }
+            }
+            else
+            {
+                // PROMPT PLAYER TO FIND EGG
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
