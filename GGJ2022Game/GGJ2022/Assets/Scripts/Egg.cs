@@ -26,8 +26,26 @@ public class Egg : MonoBehaviour
     public static float MaxHealth = 2;
     public static float Health = 2;
 
+    // Animation
+    [SerializeField] private Animator _eggAnimator;
+    [SerializeField] private SpriteRenderer _eggRenderer;
+
     private void Awake()
     {
+        switch (Health)
+        {
+            case 1:
+                {
+                    _eggAnimator.Play("2ER");
+                    break;
+                }
+            case 2:
+                {
+                    _eggAnimator.Play("1ER");
+                    break;
+                }
+        }
+        Health -= 1;
         // Pointers
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = _gravityScale;
@@ -35,7 +53,8 @@ public class Egg : MonoBehaviour
 
     private void Update()
     {
-        if(IsActive)
+        _eggAnimator.speed = (Mathf.Abs(_rigidbody.velocity.x) / HorizontalSpeed);
+        if (IsActive)
         {
             CollectMovementInput();
         }
@@ -64,7 +83,6 @@ public class Egg : MonoBehaviour
     {
         // Move
         _rigidbody.velocity = new Vector2(_horizontalInput * HorizontalSpeed, _rigidbody.velocity.y);
-
         // Wall check (to prevent sticking to walls)
         if (_rigidbody.velocity.x != 0)
         {
@@ -75,6 +93,7 @@ public class Egg : MonoBehaviour
             // Moving left
             if (_rigidbody.velocity.x < 0)
             {
+                _eggRenderer.flipX = true;
                 topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y + 0.25f), Vector2.left, _wallCheckRaycastLength);
                 midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
                 botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y - 0.24f), Vector2.left, _wallCheckRaycastLength);
@@ -82,6 +101,7 @@ public class Egg : MonoBehaviour
             // Moving right
             else
             {
+                _eggRenderer.flipX = false;
                 topHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y + 0.25f), Vector2.right, _wallCheckRaycastLength);
                 midHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
                 botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y - 0.25f), Vector2.left, _wallCheckRaycastLength);
@@ -114,8 +134,24 @@ public class Egg : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         _airborne = false;
-
-        // CRACKED VISUALS
+        switch (Health)
+        {
+            case 0:
+                {
+                    _eggAnimator.Play("3ER");
+                    break;
+                }
+            case 1:
+                {
+                    _eggAnimator.Play("2ER");
+                    break;
+                }
+            case 2:
+                {
+                    _eggAnimator.Play("1ER");
+                    break;
+                }
+        }
 
         //Parent to moving platform
         if (col.gameObject.tag == "Platform")

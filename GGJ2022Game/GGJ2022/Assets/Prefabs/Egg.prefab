@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 42309414621022961}
   - component: {fileID: 8565951214268052841}
   - component: {fileID: 819696574690940334}
+  - component: {fileID: 7723692010259567689}
   m_Layer: 6
   m_Name: Egg
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6000394852441481893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.0984504, y: 1.6600394, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.92106247, b: 0.6367924, a: 1}
+  m_Sprite: {fileID: 7441746476521331808, guid: b3b60f45c20852a4489a1966eb5dba2c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!50 &8565951214268052841
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +138,24 @@ MonoBehaviour:
   HorizontalSpeed: 5
   FloatationForce: 0.125
   IsActive: 0
+  _eggAnimator: {fileID: 7723692010259567689}
+  _eggRenderer: {fileID: 8964112926874564181}
+--- !u!95 &7723692010259567689
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000394852441481893}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 217c893dd81c7c944963304fbaf14d4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
