@@ -12,16 +12,13 @@ public class Egg : MonoBehaviour
     public float HorizontalSpeed;
 
     // Other physics
-    public float GravityScale;
+    private float _gravityScale = 1;
 
     // Wall detection
-    public float WallCheckRaycastLength;
-
-    // Respawn point
-    public static Vector3 RespawnPoint;
+    private float _wallCheckRaycastLength;
 
     // Chicken
-    public bool IsActive = false;
+    [HideInInspector] public bool IsActive = false;
     private bool _airborne = true; // Can't control egg during initial throw
 
     public static float MaxHealth = 2;
@@ -31,7 +28,7 @@ public class Egg : MonoBehaviour
     {
         // Pointers
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _rigidbody.gravityScale = GravityScale;
+        _rigidbody.gravityScale = _gravityScale;
     }
 
     private void Update()
@@ -73,16 +70,16 @@ public class Egg : MonoBehaviour
             // Moving left
             if (_rigidbody.velocity.x < 0)
             {
-                topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y + 0.25f), Vector2.left, WallCheckRaycastLength);
-                midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y), Vector2.left, WallCheckRaycastLength);
-                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y - 0.24f), Vector2.left, WallCheckRaycastLength);
+                topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y + 0.25f), Vector2.left, _wallCheckRaycastLength);
+                midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
+                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.3f, transform.position.y - 0.24f), Vector2.left, _wallCheckRaycastLength);
             }
             // Moving right
             else
             {
-                topHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y + 0.25f), Vector2.right, WallCheckRaycastLength);
-                midHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y), Vector2.left, WallCheckRaycastLength);
-                botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y - 0.25f), Vector2.left, WallCheckRaycastLength);
+                topHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y + 0.25f), Vector2.right, _wallCheckRaycastLength);
+                midHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
+                botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.3f, transform.position.y - 0.25f), Vector2.left, _wallCheckRaycastLength);
             }
             // If we hit something, stop horizontal movement
             if (topHit.collider != null)
@@ -107,7 +104,6 @@ public class Egg : MonoBehaviour
                 }
             }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D col)

@@ -20,6 +20,10 @@ public class Button_Test : MonoBehaviour
         {
             m_Platform.transform.position = Vector2.MoveTowards(m_Platform.transform.position, m_PointB.transform.position, m_PlatformSpeed * Time.deltaTime);
         }
+        else
+        {
+            m_Platform.transform.position = Vector2.MoveTowards(m_Platform.transform.position, m_PointA.transform.position, m_PlatformSpeed * Time.deltaTime);
+        }
     }
 
 
@@ -28,8 +32,17 @@ public class Button_Test : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             m_ButtonPressed = true;
-            m_Animator.SetBool("ButtonIsPressed", true); 
+            m_Animator.SetBool("ButtonIsPressed", true);
             Debug.Log("Button Pressed!");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
+        {
+            m_ButtonPressed = false;
+            m_Animator.SetBool("ButtonIsPressed", false);
         }
     }
 }

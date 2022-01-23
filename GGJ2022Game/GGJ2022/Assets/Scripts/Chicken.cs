@@ -16,15 +16,15 @@ public class Chicken : MonoBehaviour
     // Jumping
     private bool _wantsToJump = false; // Stores player input for jumping. Needed since input is in Update and Jump is in FixedUpdate
     private bool _canDoubleJump = false;
-    public float JumpVelocity; // How much to increase player's y velocity on jump
-    public float ExtendedJumpVelocity; // Velocity continuously added to a jump if the player holds the jump key
+    public float JumpForce; // How much to increase player's y velocity on jump
+    private float _extendedJumpVelocity = 0.1f; // Velocity continuously added to a jump if the player holds the jump key
     
     // Other physics
-    public float GravityScale;
+    private float _gravityScale = 1;
 
     // Platform detection
-    public float GroundCheckRaycastLength;
-    public float WallCheckRaycastLength;
+    private float _groundCheckRaycastLength;
+    private float _wallCheckRaycastLength;
 
     // Respawn point
     public static Vector3 RespawnPoint;
@@ -34,7 +34,7 @@ public class Chicken : MonoBehaviour
     private GameObject _eggInstance;
     private bool _hasEgg = true;
     public float EggLaunchForce;
-    public bool IsActive = true;
+    [HideInInspector] public bool IsActive = true;
 
     // Health
     [SerializeField] private int _maxStamina;
@@ -47,7 +47,7 @@ public class Chicken : MonoBehaviour
         _currentStamina = _maxStamina;
         // Pointers
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _rigidbody.gravityScale = GravityScale;
+        _rigidbody.gravityScale = _gravityScale;
     }
 
     private void Update()
@@ -142,16 +142,16 @@ public class Chicken : MonoBehaviour
             // Moving left
             if (_rigidbody.velocity.x < 0)
             {
-                topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y + 0.5f), Vector2.left, WallCheckRaycastLength);
-                midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y), Vector2.left, WallCheckRaycastLength);
-                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y - 0.5f), Vector2.left, WallCheckRaycastLength);
+                topHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y + 0.5f), Vector2.left, _wallCheckRaycastLength);
+                midHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
+                botHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.6f, transform.position.y - 0.5f), Vector2.left, _wallCheckRaycastLength);
             }
             // Moving right
             else
             {
-                topHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y + 0.5f), Vector2.right, WallCheckRaycastLength);
-                midHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y), Vector2.left, WallCheckRaycastLength);
-                botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y - 0.5f), Vector2.left, WallCheckRaycastLength);
+                topHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y + 0.5f), Vector2.right, _wallCheckRaycastLength);
+                midHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y), Vector2.left, _wallCheckRaycastLength);
+                botHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.6f, transform.position.y - 0.5f), Vector2.left, _wallCheckRaycastLength);
             }
             // If we hit something, stop horizontal movement
             if (topHit.collider != null)
@@ -190,7 +190,7 @@ public class Chicken : MonoBehaviour
         // Initial jump
         if (_wantsToJump && (IsTouchingGround() || _canDoubleJump))
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpVelocity);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpForce);
             if(!IsTouchingGround()) // If we just double jumped
             {
                 _canDoubleJump = false;
@@ -202,7 +202,7 @@ public class Chicken : MonoBehaviour
         // Add a bit of speed if holding space
         if(Input.GetButton("Jump"))
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + ExtendedJumpVelocity);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + _extendedJumpVelocity);
         }
 
         _wantsToJump = false;
@@ -210,8 +210,8 @@ public class Chicken : MonoBehaviour
     
     private bool IsTouchingGround()
     {
-        RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.5f, transform.position.y - 0.6f), Vector2.down, GroundCheckRaycastLength);
-        RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f, transform.position.y - 0.6f), Vector2.down, GroundCheckRaycastLength);
+        RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - 0.5f, transform.position.y - 0.6f), Vector2.down, _groundCheckRaycastLength);
+        RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f, transform.position.y - 0.6f), Vector2.down, _groundCheckRaycastLength);
         if (leftHit.collider != null)
         {
             if (leftHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
@@ -270,6 +270,6 @@ public class Chicken : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y - 0.6f), new Vector3(transform.position.x, transform.position.y - 0.5f - GroundCheckRaycastLength));
+        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y - 0.6f), new Vector3(transform.position.x, transform.position.y - 0.5f - _groundCheckRaycastLength));
     }
 }
