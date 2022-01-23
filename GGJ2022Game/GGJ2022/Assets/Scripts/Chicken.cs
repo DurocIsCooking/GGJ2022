@@ -55,12 +55,28 @@ public class Chicken : MonoBehaviour
 
     private void Update()
     {
-        // Swap controls if needed
-        ManageControls();
+        // Input that is possible all the time
+        CollectInput();
+        // Input only when the chicken is active
         if (IsActive)
         {
             CollectMovementInput();
         }
+    }
+
+    private void CollectInput()
+    {
+        // Switch between chicken and egg
+        if (Input.GetButtonDown("SwitchControls") && _eggInstance != null)
+        {
+            SwitchControls();
+        }
+        // Reset to last nest
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            
+        }
+
     }
 
     private void CollectMovementInput()
@@ -118,13 +134,6 @@ public class Chicken : MonoBehaviour
         }
     }
 
-    private void ManageControls()
-    {
-        if (Input.GetButtonDown("SwitchControls") && _eggInstance != null)
-        {
-            SwitchControls();
-        }
-    }
 
     public void SwitchControls()
     {
@@ -249,6 +258,7 @@ public class Chicken : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        // Pick up egg
         if(col.collider.gameObject.layer == LayerMask.NameToLayer("Egg"))
         {
             Destroy(col.collider.gameObject);
@@ -258,7 +268,18 @@ public class Chicken : MonoBehaviour
             }
             PickUpEgg();
         }
+        // Parent to moving platform
+        if (col.gameObject.tag == "Platform")
+        {
+            gameObject.transform.parent = col.gameObject.transform;
+        }
 
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        // Deparent from moving platform
+        gameObject.transform.parent = null;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -289,12 +310,25 @@ public class Chicken : MonoBehaviour
                 }
                 else
                 {
-                    // YOU WIN!
+                    // Victory
+                    MenuManager.Instance.LoadGameEndMenu();
                 }
             }
             else
             {
                 // PROMPT PLAYER TO FIND EGG
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Nest"))
+        {
+            if (_hasEgg)
+            {
+                _currentStamina = _maxStamina;
+                Egg.Health = Egg.MaxHealth;
             }
         }
     }
@@ -312,12 +346,5 @@ public class Chicken : MonoBehaviour
         _hasEgg = true;
         _canDoubleJump = false;
         _currentHorizontalSpeed = HorizontalSpeedEgg;
-    }
-
-   
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y - 0.6f), new Vector3(transform.position.x, transform.position.y - 0.5f - _groundCheckRaycastLength));
     }
 }
