@@ -1,43 +1,25 @@
 fileFormatVersion: 2
-guid: b3b60f45c20852a4489a1966eb5dba2c
+guid: 87ba43d71c6cec44c80fa575c7427277
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7441746476521331808
-    second: 1ER_01
+      213: 7909151457947328768
+    second: ChickenThrow_01
   - first:
-      213: 2845001855053748133
-    second: 1ER_02
+      213: -8653813655727051114
+    second: ChickenThrow_02
   - first:
-      213: 748223717377253412
-    second: 1ER_03
+      213: 7308565162573559260
+    second: ChickenThrow_03
   - first:
-      213: -3404678617149207123
-    second: 1ER_04
+      213: -1456599740944353648
+    second: ChickenThrow_04
   - first:
-      213: -683784675350895019
-    second: 1ER_05
+      213: -2005090379434522717
+    second: ChickenThrow_05
   - first:
-      213: -6627317785135735541
-    second: 1ER_06
-  - first:
-      213: 4764998346691780547
-    second: 1ER_07
-  - first:
-      213: -282375583205689845
-    second: 1ER_08
-  - first:
-      213: -1386953299956863824
-    second: 1ER_09
-  - first:
-      213: -9166422878547695026
-    second: 1ER_10
-  - first:
-      213: 8762205426245953223
-    second: 1ER_11
-  - first:
-      213: -7221157504349533641
-    second: 1ER_12
+      213: 841823923218178213
+    second: ChickenThrow_06
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1ER_01
+      name: ChickenThrow_01
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,41 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c91990ef4664760800000000000000
-      internalID: 7441746476521331808
+      spriteID: 001a6b5b853f2cd60800000000000000
+      internalID: 7909151457947328768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_02
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a75ecb1d1a7b7720800000000000000
-      internalID: 2845001855053748133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_03
+      name: ChickenThrow_02
       rect:
         serializedVersion: 2
         x: 32
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4202bc6b189326a00800000000000000
-      internalID: 748223717377253412
+      spriteID: 69ee6f9745a77e780800000000000000
+      internalID: -8653813655727051114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_04
+      name: ChickenThrow_03
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,104 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad047226d620c0d0800000000000000
-      internalID: -3404678617149207123
+      spriteID: cd5fdfcfa4d3d6560800000000000000
+      internalID: 7308565162573559260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_05
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 556aadae575b286f0800000000000000
-      internalID: -683784675350895019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_06
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0d1b5366990704a0800000000000000
-      internalID: -6627317785135735541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_07
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cf13e110cca02240800000000000000
-      internalID: 4764998346691780547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_08
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b06f7c537ecc41cf0800000000000000
-      internalID: -282375583205689845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_09
+      name: ChickenThrow_04
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,41 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bce304725d80cce0800000000000000
-      internalID: -1386953299956863824
+      spriteID: 096f515c04e19cbe0800000000000000
+      internalID: -1456599740944353648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_10
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4aa62f25f25ac080800000000000000
-      internalID: -9166422878547695026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1ER_11
+      name: ChickenThrow_05
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c6e368396b999970800000000000000
-      internalID: 8762205426245953223
+      spriteID: 3a7804f5cec7c24e0800000000000000
+      internalID: -2005090379434522717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1ER_12
+      name: ChickenThrow_06
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73a8916528b49cb90800000000000000
-      internalID: -7221157504349533641
+      spriteID: 5a068d2e562ceab00800000000000000
+      internalID: 841823923218178213
       vertices: []
       indices: 
       edges: []
