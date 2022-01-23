@@ -13,6 +13,8 @@ public class Egg : MonoBehaviour
 
     // Other physics
     private float _gravityScale = 1;
+    public float FloatationForce = 0.01f;
+    private bool _inWater = false;
 
     // Wall detection
     private float _wallCheckRaycastLength;
@@ -37,7 +39,10 @@ public class Egg : MonoBehaviour
         {
             CollectMovementInput();
         }
-        
+        if (_inWater)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
+        }
     }
 
     private void CollectMovementInput()
@@ -110,5 +115,21 @@ public class Egg : MonoBehaviour
     {
         _airborne = false;
         // CRACKED VISUALS
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            Debug.Log("Water");
+            _inWater = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            _inWater = false;
+        }
     }
 }

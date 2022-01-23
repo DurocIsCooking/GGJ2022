@@ -21,6 +21,8 @@ public class Chicken : MonoBehaviour
     
     // Other physics
     private float _gravityScale = 1;
+    public float FloatationForce = -0.1f;
+    private bool _inWater = false;
 
     // Platform detection
     private float _groundCheckRaycastLength;
@@ -106,6 +108,10 @@ public class Chicken : MonoBehaviour
             ManageHorizontalMovement();
             ManageJump();
         }
+        if(_inWater)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
+        }
     }
 
     private void ManageControls()
@@ -119,9 +125,15 @@ public class Chicken : MonoBehaviour
     public void SwitchControls()
     {
         // Stop movement
-        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
-        Rigidbody2D eggrb = _eggInstance.GetComponent<Rigidbody2D>();
-        eggrb.velocity = new Vector2(0, eggrb.velocity.y);
+        if (IsActive)
+        {
+            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        }
+        else
+        {
+            Rigidbody2D eggrb = _eggInstance.GetComponent<Rigidbody2D>();
+            eggrb.velocity = new Vector2(0, eggrb.velocity.y);
+        }
         // Switch controls
         _eggInstance.GetComponent<Egg>().IsActive = IsActive;
         IsActive = !IsActive;
@@ -214,14 +226,14 @@ public class Chicken : MonoBehaviour
         RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f, transform.position.y - 0.6f), Vector2.down, _groundCheckRaycastLength);
         if (leftHit.collider != null)
         {
-            if (leftHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+            if (leftHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform") || leftHit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
                 return true;
             }
         }
         if (rightHit.collider != null)
         {
-            if (rightHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+            if (rightHit.collider.gameObject.layer == LayerMask.NameToLayer("Platform") || rightHit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
                 return true;
             }
@@ -245,6 +257,10 @@ public class Chicken : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            _inWater = true;
+        }
         if (col.gameObject.layer == LayerMask.NameToLayer("Nest"))
         {
             if (_hasEgg)
@@ -256,6 +272,14 @@ public class Chicken : MonoBehaviour
             {
                 // PROMPT PLAYER TO FIND EGG
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            _inWater = false;
         }
     }
 
