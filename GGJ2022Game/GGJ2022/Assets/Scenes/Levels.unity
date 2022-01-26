@@ -6201,7 +6201,7 @@ Transform:
   - {fileID: 1272467161}
   - {fileID: 77816865}
   m_Father: {fileID: 618255256}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592812134
 GameObject:
@@ -6260,7 +6260,7 @@ Transform:
   - {fileID: 298614662}
   - {fileID: 719228031}
   m_Father: {fileID: 618255256}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &593675089
 GameObject:
@@ -6615,13 +6615,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 40, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1397848757}
+  - {fileID: 1572767474}
   - {fileID: 949518946}
   - {fileID: 592812135}
   - {fileID: 970671378}
   - {fileID: 587917280}
   - {fileID: 1612395772}
-  - {fileID: 1397848757}
-  - {fileID: 1572767474}
   - {fileID: 1619164911}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -9374,7 +9374,7 @@ Transform:
   - {fileID: 1204635356}
   - {fileID: 1046992424}
   m_Father: {fileID: 618255256}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949914258
 GameObject:
@@ -9567,7 +9567,7 @@ Transform:
   - {fileID: 71418057}
   - {fileID: 314536823}
   m_Father: {fileID: 618255256}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1010514675
 GameObject:
@@ -13671,7 +13671,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618255256}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1398984590 stripped
 Transform:
@@ -15021,7 +15021,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618255256}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587807071
 GameObject:
@@ -15428,7 +15428,7 @@ Transform:
   - {fileID: 134953982}
   - {fileID: 288452227}
   m_Father: {fileID: 618255256}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1613182260
 GameObject:
