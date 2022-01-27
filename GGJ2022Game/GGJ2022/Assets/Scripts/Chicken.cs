@@ -49,6 +49,9 @@ public class Chicken : MonoBehaviour
     [SerializeField] private GameObject _carriedEggLeft;
     [SerializeField] private GameObject _carriedEggRight;
     [SerializeField] private Sprite[] _backEggSprites;
+    [SerializeField] private SpriteRenderer _tutorialRenderer;
+    [SerializeField] private SpriteRenderer _staminaRenderer;
+    [SerializeField] private Sprite[] _staminaSprites;
     private bool _hasFoundAnimation;
 
     private void Awake()
@@ -93,13 +96,22 @@ public class Chicken : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
 
         // Check to see if player wants to jump
-        if (Input.GetButtonDown("Jump") && _currentStamina > 0)
+        if (Input.GetButtonDown("Jump"))
         {
-            _wantsToJump = true;
+            if(_currentStamina > 0)
+            {
+                _wantsToJump = true;
+            }
         }
 
         if(Input.GetButtonDown("ThrowEgg") && _hasEgg)
         {
+            if ((!TutorialSystem.HasThrown) && TutorialSystem.HasJumped && TutorialSystem.HasMoved)
+            {
+                _tutorialRenderer.enabled = false;
+                TutorialSystem.HasThrown = true;
+            }
+            
             ThrowEgg();
         }
     }
@@ -159,6 +171,11 @@ public class Chicken : MonoBehaviour
     public void SwitchControls()
     {
         // Stop movement and change camera focus
+        if ((!TutorialSystem.HasSwapped) && TutorialSystem.HasThrown && TutorialSystem.HasJumped && TutorialSystem.HasMoved)
+        {
+            _tutorialRenderer.enabled = false;
+            TutorialSystem.HasSwapped = true;
+        }
         if (IsActive)
         {
             _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
@@ -181,6 +198,12 @@ public class Chicken : MonoBehaviour
         _rigidbody.velocity = new Vector2(_horizontalInput * _currentHorizontalSpeed, _rigidbody.velocity.y);
         if (_horizontalInput > 0)
         {
+            if (!TutorialSystem.HasMoved)
+            {
+                _tutorialRenderer.enabled = false;
+                TutorialSystem.HasMoved = true;
+            }
+            
             if (IsTouchingGround())
             {
                 _hasFoundAnimation = true;
@@ -194,6 +217,11 @@ public class Chicken : MonoBehaviour
         }
         else if (_horizontalInput < 0)
         {
+            if (!TutorialSystem.HasMoved)
+            {
+                _tutorialRenderer.enabled = false;
+                TutorialSystem.HasMoved = true;
+            }
             if (IsTouchingGround())
             {
                 _hasFoundAnimation = true;
@@ -264,6 +292,11 @@ public class Chicken : MonoBehaviour
         // Initial jump
         if (_wantsToJump && (IsTouchingGround() || _canDoubleJump))
         {
+            if ((!TutorialSystem.HasJumped) && TutorialSystem.HasMoved)
+            {
+                _tutorialRenderer.enabled = false;
+                TutorialSystem.HasJumped = true;
+            }
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpForce);
             _chickenAnimator.Play("ChickenJump");
             if(!IsTouchingGround()) // If we just double jumped
@@ -271,9 +304,9 @@ public class Chicken : MonoBehaviour
                 _canDoubleJump = false;
             }
             _currentStamina -= 1;
-            // VISUALS FOR STAMINA
+            _staminaRenderer.sprite = _staminaSprites[_currentStamina];
         }
-
+        
         // Add a bit of speed if holding space
         if(Input.GetButton("Jump"))
         {
@@ -344,6 +377,7 @@ public class Chicken : MonoBehaviour
                 _currentStamina = _maxStamina;
                 Egg.Health = Egg.MaxHealth;
                 BackEggUpdate();
+                _staminaRenderer.sprite = _staminaSprites[_currentStamina];
             }
             else
             {
@@ -443,5 +477,9 @@ public class Chicken : MonoBehaviour
                     break;
                 }
         }
+    }
+    protected void HideStamina()
+    {
+        _staminaRenderer.enabled = false;
     }
 }
