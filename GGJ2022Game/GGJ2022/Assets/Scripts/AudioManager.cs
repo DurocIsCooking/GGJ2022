@@ -65,7 +65,7 @@ public class AudioManager : MonoBehaviour
         m_BGMChickenAudioSource.clip = m_BGMChicken;
         m_BGMEggAudioSource.clip = m_BGMEgg;
         //Set both volumes.
-        m_BGMMixer.SetFloat("m_BGMChickenVol", -5.0f);
+        m_BGMMixer.SetFloat("m_BGMChickenVol", -2.0f);
         m_BGMMixer.SetFloat("m_BGMEggVol", -80.0f);
         //Check if the first BGM is playing/audible.
         m_BGMChickenPlaying = true;
@@ -79,12 +79,12 @@ public class AudioManager : MonoBehaviour
         if (m_BGMChickenPlaying)
         {
             m_BGMMixer.SetFloat("m_BGMChickenVol", -80.0f);
-            m_BGMMixer.SetFloat("m_BGMEggVol", -10.0f);
+            m_BGMMixer.SetFloat("m_BGMEggVol", -12.0f);
             m_BGMChickenPlaying = false;
         }
         else
         {
-            m_BGMMixer.SetFloat("m_BGMChickenVol", -5.0f);
+            m_BGMMixer.SetFloat("m_BGMChickenVol", -2.0f);
             m_BGMMixer.SetFloat("m_BGMEggVol", -80.0f);
             m_BGMChickenPlaying = true;
         }
