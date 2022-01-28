@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource m_BGMAudioSource;
+    [SerializeField] private AudioSource m_BGMChickenAudioSource;
+    [SerializeField] private AudioSource m_BGMEggAudioSource;
+    [SerializeField] private AudioMixer m_BGMMixer;
     [SerializeField] private AudioSource m_SFXAudioSource;
 
     [Header("BGM")]
-    [SerializeField] private AudioClip m_BGM;           //The song playing in the background.
+    [SerializeField] private AudioClip m_BGMChicken;    //The song that shou in the background while playing as the Chicken.
+    private bool m_BGMChickenPlaying;
+    [SerializeField] private AudioClip m_BGMEgg;        //The song playing in the background while playing as the Egg.
 
     [Header("SFX - Chicken")]
     [SerializeField] private AudioClip[] m_ChickenBok;  //Bok bok bok.
@@ -56,8 +61,33 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        m_BGMAudioSource.clip = m_BGM;
-        m_BGMAudioSource.Play();
+        //Set both clips.
+        m_BGMChickenAudioSource.clip = m_BGMChicken;
+        m_BGMEggAudioSource.clip = m_BGMEgg;
+        //Set both volumes.
+        m_BGMMixer.SetFloat("m_BGMChickenVol", 0.0f);
+        m_BGMMixer.SetFloat("m_BGMEggVol", -80.0f);
+        //Check if the first BGM is playing/audible.
+        m_BGMChickenPlaying = true;
+        //Both play.
+        m_BGMChickenAudioSource.Play();
+        m_BGMEggAudioSource.Play();
+    }
+
+    public void BGM_Switch()
+    {
+        if (m_BGMChickenPlaying)
+        {
+            m_BGMMixer.SetFloat("m_BGMChickenVol", -80.0f);
+            m_BGMMixer.SetFloat("m_BGMEggVol", -5.0f);
+            m_BGMChickenPlaying = false;
+        }
+        else
+        {
+            m_BGMMixer.SetFloat("m_BGMChickenVol", 0.0f);
+            m_BGMMixer.SetFloat("m_BGMEggVol", -80.0f);
+            m_BGMChickenPlaying = true;
+        }
     }
 
     public void SFX_ChickenBok()

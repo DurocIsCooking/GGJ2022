@@ -190,6 +190,7 @@ public class Chicken : MonoBehaviour
         // Switch controls
         _eggInstance.GetComponent<Egg>().IsActive = IsActive;
         IsActive = !IsActive;
+        AudioManager.Instance.BGM_Switch(); //Added this so that the audio switches between Chicken BGM and Egg BGM. Feel free to move it if there's a better spot for it. 
     }
 
     private void ManageHorizontalMovement()
