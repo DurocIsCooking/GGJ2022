@@ -13,7 +13,7 @@ public class Egg : MonoBehaviour
 
     // Other physics
     private float _gravityScale = 1;
-    public float FloatationForce = 0.01f;
+    private float FloatationForce = 0.4f;
     private bool _inWater = false;
 
     // Wall detection
@@ -58,10 +58,6 @@ public class Egg : MonoBehaviour
         {
             CollectMovementInput();
         }
-        if (_inWater)
-        {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
-        }
     }
 
     private void CollectMovementInput()
@@ -76,6 +72,10 @@ public class Egg : MonoBehaviour
         if(!_airborne && IsActive)
         {
             ManageHorizontalMovement();
+        }
+        if (_inWater)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
         }
     }
 
