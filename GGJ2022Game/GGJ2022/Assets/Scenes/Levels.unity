@@ -14904,7 +14904,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7791677076609572281, guid: 05b33f02618dd5649a87cb61811433cb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b7739817b3160a14689454e7ddef9b34, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ebb30a3cf4858e643b089688922e1ec7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -15000,7 +15000,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6185182270972228416, guid: 05b33f02618dd5649a87cb61811433cb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2ce812be3708139479ed6a891d1017e8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f02abbc731ac4f8488e670459a04b203, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -15102,8 +15102,8 @@ MonoBehaviour:
   m_BGMEggAudioSource: {fileID: 1474371693}
   m_BGMMixer: {fileID: 24100000, guid: 05b33f02618dd5649a87cb61811433cb, type: 2}
   m_SFXAudioSource: {fileID: 1474371697}
-  m_BGMChicken: {fileID: 8300000, guid: 2ce812be3708139479ed6a891d1017e8, type: 3}
-  m_BGMEgg: {fileID: 8300000, guid: b7739817b3160a14689454e7ddef9b34, type: 3}
+  m_BGMChicken: {fileID: 8300000, guid: f02abbc731ac4f8488e670459a04b203, type: 3}
+  m_BGMEgg: {fileID: 8300000, guid: ebb30a3cf4858e643b089688922e1ec7, type: 3}
   m_ChickenBok: []
   m_ChickenJump: {fileID: 0}
   m_EggRoll: {fileID: 0}
