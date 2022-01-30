@@ -52,6 +52,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private SpriteRenderer _tutorialRenderer;
     [SerializeField] private SpriteRenderer _staminaRenderer;
     [SerializeField] private Sprite[] _staminaSprites;
+    [SerializeField] private GameObject _nestSprite;
     private bool _hasFoundAnimation;
 
     private void Awake()
@@ -85,7 +86,11 @@ public class Chicken : MonoBehaviour
         // Reset to last nest
         if (Input.GetKeyDown(KeyCode.R))
         {
-            
+            Application.LoadLevel(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 
     }
@@ -101,6 +106,11 @@ public class Chicken : MonoBehaviour
             if(_currentStamina > 0)
             {
                 _wantsToJump = true;
+            }
+            else
+            {
+                _nestSprite.SetActive(true);
+                Invoke("HideNest", 1.5f);
             }
         }
 
@@ -139,6 +149,11 @@ public class Chicken : MonoBehaviour
             Debug.Log(_eggInstance.name);
 
             Camera.Egg = _eggInstance;
+        }
+        else
+        {
+            _nestSprite.SetActive(true);
+            Invoke("HideNest", 1.5f);
         }
 
     }
@@ -482,5 +497,9 @@ public class Chicken : MonoBehaviour
     protected void HideStamina()
     {
         _staminaRenderer.enabled = false;
+    }
+    protected void HideNest()
+    {
+        _nestSprite.SetActive(false);
     }
 }
