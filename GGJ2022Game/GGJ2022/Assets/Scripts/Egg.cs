@@ -13,7 +13,10 @@ public class Egg : MonoBehaviour
 
     // Other physics
     private float _gravityScale = 1;
-    private float FloatationForce = 0.4f;
+    private float _floatationForce = 0.4f;
+    private float _floatationDelay = 0.1f; // A short delay before water applies floatation to the egg, to create a bobbing motion.
+    private float _waterEntrySpeed = -1; // Egg's y-velocity upon entering water
+    private float _floatationTimer = 0;
     private bool _inWater = false;
 
     // Wall detection
@@ -75,7 +78,11 @@ public class Egg : MonoBehaviour
         }
         if (_inWater)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + FloatationForce);
+            _floatationTimer += Time.deltaTime;
+            if(_floatationTimer > _floatationDelay)
+            {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y + _floatationForce);
+            }
         }
     }
 
@@ -171,6 +178,7 @@ public class Egg : MonoBehaviour
         if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             Debug.Log("Water");
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _waterEntrySpeed);
             _inWater = true;
         }
         if (col.gameObject.layer == LayerMask.NameToLayer("Nest") || col.gameObject.layer == LayerMask.NameToLayer("Goal"))
@@ -184,6 +192,7 @@ public class Egg : MonoBehaviour
         if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             _inWater = false;
+            _floatationTimer = 0;
         }
     }
 }
